@@ -1,7 +1,7 @@
 import React from "react";
 import newchat from "../assets/newchat.png";
 import chat from "../assets/chat.svg";
-import darkMode from "../assets/darkmode.svg";
+// import darkMode from "../assets/darkmode.svg";
 import person from "../assets/person.png";
 import DefaultQuesJson from "../apiData/Default.json";
 import DefaultQuestion from "./DefaultQuestion";
@@ -48,7 +48,7 @@ const Homepage = () => {
             <div className="flex items-center gap-2">
               <span className="text-sm text-black">Light </span>
               <div>
-                <img src={darkMode} className=" h-8 " alt="" />
+                {/* <img src={darkMode} className=" h-8 " alt="" /> */}
               </div>
             </div>
           </div>
