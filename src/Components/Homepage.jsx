@@ -42,14 +42,14 @@ const Homepage = () => {
         <div className="w-full md:w-3/4 bg-purple-100 p-2 flex flex-col relative ">
           {/* Header */}
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-purple-500">
-              Customer Support AI
-            </h1>
+            <header>
+              <h1 className="text-3xl font-bold text-purple-500">
+                Customer Support AI
+              </h1>
+            </header>
             <div className="flex items-center gap-2">
               <span className="text-sm text-black">Light </span>
-              <div>
-                {/* <img src={darkMode} className=" h-8 " alt="" /> */}
-              </div>
+              <div>{/* <img src={darkMode} className=" h-8 " alt="" /> */}</div>
             </div>
           </div>
 
@@ -77,10 +77,9 @@ const Homepage = () => {
             <div className="input w-full flex items-center mt-5 mb-4">
               <form className="w-full flex gap-4 " action="">
                 <input
-                  className=" w-full md:w-3/4 h-12 border-2 border-gray-300 rounded-lg p-2  shadow-md  focus:outline-none focus:ring-2 focus:ring-purple-500 ml-2"
+                  className=" w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg p-2  shadow-md  focus:outline-none focus:ring-2 focus:ring-purple-500 ml-2"
                   type="text"
                   placeholder="Please tell me about your query!"
-                  
                 />
                 <button className=" w-1/6">Ask</button>
                 <button className=" w-1/6">Save</button>
