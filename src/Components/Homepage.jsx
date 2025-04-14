@@ -81,8 +81,12 @@ const Homepage = () => {
                   type="text"
                   placeholder="Please tell me about your query!"
                 />
-                <button className=" w-1/6">Ask</button>
-                <button className=" w-1/6">Save</button>
+                <button type="submit" className=" w-1/6">
+                  Ask
+                </button>
+                <button type="submit" className=" w-1/6">
+                  Save
+                </button>
               </form>
             </div>
           </div>
