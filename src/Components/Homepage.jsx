@@ -1,12 +1,85 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import newchat from "../assets/newchat.png";
 import chat from "../assets/chat.svg";
 // import darkMode from "../assets/darkmode.svg";
+import sampleData from "../apiData/sampleData.json";
 import person from "../assets/person.png";
 import DefaultQuesJson from "../apiData/Default.json";
 import DefaultQuestion from "./DefaultQuestion";
 import "./Homepage.css";
+import QuestionAnswer from "./QuestionAnswer";
 const Homepage = () => {
+  const [HomepageData, setHomepageData] = useState([]);
+  const [isHiden, setIsHidden] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  // const storedData = localStorage.getItem("HomepageData");
+  const handleClick = (ques) => {
+    // console.log(ques);
+    // setHomepageData(ques);
+    // console.log(ques);
+    // setIsHidden(true);
+
+    const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
+    const updatedData = [...prevData, ques];
+    localStorage.setItem("HomepageData", JSON.stringify(updatedData));
+    setHomepageData(updatedData);
+    setIsHidden(true);
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    console.log(value);
+    setInputValue(value);
+  };
+
+  const handleAsk = (e) => {
+    // e.preventDefault();
+    // // console.log(inputValue);
+    // // setHomepageData([...HomepageData, { question: inputValue, answer: "" }]);
+    // const data = sampleData.filter((item) => {
+    //   return item.question.toLowerCase().includes(inputValue.toLowerCase());
+    // });
+
+    // // console.log(data[0]);
+    // // setHomepageData(data[0]);
+    // setIsHidden(true);
+    // setInputValue("");
+    // localStorage.setItem("inputData", JSON.stringify(data[0]));
+    // // console.log(HomepageData);
+
+    e.preventDefault();
+
+    const matchedData = sampleData.filter((item) =>
+      item.question.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  
+    if (matchedData.length > 0) {
+      const newEntry = matchedData[0];
+  
+      // Get previous questions from localStorage (if any)
+      const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
+  
+      // Add new question to the list
+      const updatedData = [...prevData, newEntry];
+  
+      // Save to localStorage
+      localStorage.setItem("HomepageData", JSON.stringify(updatedData));
+  
+      // Update component state
+      setHomepageData(updatedData);
+      setIsHidden(true);
+      setInputValue("");
+    }
+  };
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("inputData");
+
+    setHomepageData([...HomepageData, JSON.parse(storedData)]);
+
+    // console.log("Homepage", HomepageData);
+  }, [inputValue]);
   return (
     <>
       <div className="flex flex-col md:flex-row h-screen w-full">
@@ -53,43 +126,64 @@ const Homepage = () => {
             </div>
           </div>
 
-          {/* Centered Message */}
-          <div className="flex flex-col items-center mt-20 flex-1">
-            <h2 className="text-2xl font-bold mt-0">
-              Hi, Please tell me your query!
-            </h2>
-            <img
-              src={person}
-              alt="Support"
-              className="w-20 h-20 mt-2 rounded-full"
-            />
-          </div>
-          {/* questio list  */}
-          <div className="defaultQues mb-4 md:mb-6 mt-4 w-full">
-            {/* Grid of questions */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-              {DefaultQuesJson.map((ques) => (
-                <DefaultQuestion key={ques.id} data={ques} />
-              ))}
-            </div>
-
-            {/* Input section */}
-            <div className="input w-full flex items-center mt-5 mb-4">
-              <form className="w-full flex gap-4 " action="">
-                <input
-                  className=" w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg p-2  shadow-md  focus:outline-none focus:ring-2 focus:ring-purple-500 ml-2"
-                  type="text"
-                  placeholder="Please tell me about your query!"
+          {!isHiden ? (
+            <div>
+              <div className="flex flex-col items-center mt-20 flex-1">
+                <h2 className="text-2xl font-bold mt-0">
+                  Hi, Please tell me your query!
+                </h2>
+                <img
+                  src={person}
+                  alt="Support"
+                  className="w-20 h-20 mt-2 rounded-full"
                 />
-                <button type="submit" className=" w-1/6">
-                  Ask
-                </button>
-                <button type="submit" className=" w-1/6">
-                  Save
-                </button>
-              </form>
+              </div>
+
+              {/* questio list  */}
+              <div className="defaultQues mb-4 md:mb-6 mt-4 w-full">
+                {/* Grid of questions */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                  {DefaultQuesJson.map((ques) => (
+                    <DefaultQuestion
+                      key={ques.id}
+                      data={ques}
+                      handleClick={() => {
+                        handleClick(ques);
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Input section */}
+                <div className="input w-full flex items-center mt-5 mb-4">
+                  <form className="w-full flex gap-4 " action="" type="submit">
+                    <input
+                      className=" w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg p-2  shadow-md  focus:outline-none focus:ring-2 focus:ring-purple-500 ml-2"
+                      type="text"
+                      placeholder="Please tell me about your query!"
+                      onChange={(e) => {
+                        handleInputChange(e);
+                      }}
+                    />
+                    <button
+                      type="submit"
+                      className=" w-1/6"
+                      onClick={(e) => {
+                        handleAsk(e);
+                      }}
+                    >
+                      Ask
+                    </button>
+                    <button type="submit" className=" w-1/6">
+                      Save
+                    </button>
+                  </form>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            HomepageData && <QuestionAnswer data={HomepageData} />
+          )}
         </div>
       </div>
     </>
