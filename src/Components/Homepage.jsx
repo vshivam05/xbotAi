@@ -36,20 +36,6 @@ const Homepage = () => {
   };
 
   const handleAsk = (e) => {
-    // e.preventDefault();
-    // // console.log(inputValue);
-    // // setHomepageData([...HomepageData, { question: inputValue, answer: "" }]);
-    // const data = sampleData.filter((item) => {
-    //   return item.question.toLowerCase().includes(inputValue.toLowerCase());
-    // });
-
-    // // console.log(data[0]);
-    // // setHomepageData(data[0]);
-    // setIsHidden(true);
-    // setInputValue("");
-    // localStorage.setItem("inputData", JSON.stringify(data[0]));
-    // // console.log(HomepageData);
-
     e.preventDefault();
 
     const matchedData = sampleData.filter((item) =>
@@ -180,36 +166,38 @@ const Homepage = () => {
             HomepageData && <QuestionAnswer data={HomepageData} />
           )}
 
-          <div className="input w-full flex items-center mt-5 mb-4 fixed  bottom-0 bg-white">
-            <div className="input w-full  md:w-3/4">
-              <form className="w-full flex gap-4 " action="" type="submit">
-                <input
-                  className=" w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg p-2  shadow-md  focus:outline-none focus:ring-2 focus:ring-purple-500 ml-2"
-                  type="text"
-                  placeholder="Please tell me about your query!"
-                  onChange={(e) => {
-                    handleInputChange(e);
-                  }}
-                />
-              </form>
-            </div>
-            <div className="buttons p-2 flex gap-2 w-full md:w-1/4"> 
+          {/* <div className="fixed bottom-0 w-full bg-white px-4 py-3 shadow-inner"> */}
+          {/* <div className="fixed bottom-0 w-full md: bg-white ps-0 py-3 shadow-inner"> */}
+          <div className="flex flex-col md:flex-row md:items-center gap-4 max-w-6xl mx-auto">
+            {/* Input - 75% on md+ */}
+            <input
+              type="text"
+              placeholder="Please tell me about your query!"
+              className="w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg px-4 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+              onChange={handleInputChange}
+            />
+
+            {/* Buttons - 25% on md+ */}
+            <div className="flex gap-2 w-full md:w-1/4">
               <button
-                type="submit"
-                className=" w-full md:w-1/2 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
-                onClick={(e) => handleAsk(e)}
+                type="button"
+                onClick={handleAsk}
+                className="w-1/2 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
               >
                 Ask
               </button>
               <button
                 type="button"
-                className="w-full md:w-1/2 bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200"
                 onClick={handleSave}
+                className="w-1/2 bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200"
               >
                 Save
               </button>
             </div>
           </div>
+          {/* </div> */}
+
+          {/* </div> */}
         </div>
       </div>
     </>
