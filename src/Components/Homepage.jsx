@@ -73,6 +73,9 @@ const Homepage = () => {
     }
   };
 
+  const handleSave = (e) => {
+    e.preventDefault();}
+
   useEffect(() => {
     const storedData = localStorage.getItem("inputData");
 
@@ -174,7 +177,7 @@ const Homepage = () => {
                     >
                       Ask
                     </button>
-                    <button type="submit" className=" w-1/6">
+                    <button type="button" className=" w-1/6"  onClick={handleSave}>
                       Save
                     </button>
                   </form>
