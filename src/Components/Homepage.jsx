@@ -8,11 +8,13 @@ import DefaultQuesJson from "../apiData/Default.json";
 import DefaultQuestion from "./DefaultQuestion";
 import "./Homepage.css";
 import QuestionAnswer from "./QuestionAnswer";
+import { useNavigate } from "react-router-dom";
 const Homepage = () => {
   const [HomepageData, setHomepageData] = useState([]);
   const [isHiden, setIsHidden] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
+  const navigate = useNavigate();
   // const storedData = localStorage.getItem("HomepageData");
   const handleClick = (ques) => {
     // console.log(ques);
@@ -93,7 +95,7 @@ const Homepage = () => {
       <div className="flex flex-col md:flex-row h-screen w-full">
         <div className="w-full md:w-1/4 bg-purple-200 p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
-            <button className="text-black font-bold text-xl w-full text-left">
+            <button className="text-black font-bold text-xl w-full text-left" type="submit">
               <div className="flex flex-row gap-4 items-center">
                 <img
                   src={newchat}
@@ -114,7 +116,9 @@ const Homepage = () => {
             </button>
           </div>
 
-          <button className="bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow">
+          <button type="submit" className="bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow" onClick={() => {
+                navigate("/history");
+              }}>
             Past Conversations
           </button>
         </div>
@@ -163,39 +167,40 @@ const Homepage = () => {
                 </div>
 
                 {/* Input section */}
-                <div className="input w-full flex items-center mt-5 mb-4">
-                  <form className="w-full flex gap-4 " action="" type="submit">
-                    <input
-                      className=" w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg p-2  shadow-md  focus:outline-none focus:ring-2 focus:ring-purple-500 ml-2"
-                      type="text"
-                      placeholder="Please tell me about your query!"
-                      onChange={(e) => {
-                        handleInputChange(e);
-                      }}
-                    />
-                    <button
-                      type="submit"
-                      className=" w-1/6"
-                      onClick={(e) => {
-                        handleAsk(e);
-                      }}
-                    >
-                      Ask
-                    </button>
-                    <button
-                      type="button"
-                      className=" w-1/6"
-                      onClick={handleSave}
-                    >
-                      Save
-                    </button>
-                  </form>
-                </div>
               </div>
             </div>
           ) : (
             HomepageData && <QuestionAnswer data={HomepageData} />
           )}
+
+          <div className="input w-full flex items-center mt-5 mb-4 fixed  bottom-0 bg-white">
+            <form className="w-full flex gap-4 " action="" type="submit">
+              <input
+                className=" w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg p-2  shadow-md  focus:outline-none focus:ring-2 focus:ring-purple-500 ml-2"
+                type="text"
+                placeholder="Please tell me about your query!"
+                onChange={(e) => {
+                  handleInputChange(e);
+                }}
+              />
+            </form>
+            <div className="buttons p-2 flex gap-2 w-full md:w-1/4">
+              <button
+                type="submit"
+                className=" bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
+                onClick={(e) => handleAsk(e)}
+              >
+                Ask
+              </button>
+              <button
+                type="button"
+                className="w-1/2 bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200"
+                onClick={handleSave}
+              >
+                Save
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
