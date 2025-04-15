@@ -19,6 +19,10 @@ const QuestionAnswer = ({ data }) => {
     setMessages(enrichedMessages);
   }, [data]); // re-run when data changes
 
+  useEffect(() => {
+    console.log(data);
+  }, []);
+
   const handleRatingChange = (e) => {
     setRating(parseInt(e.target.value));
   };
@@ -48,7 +52,7 @@ const QuestionAnswer = ({ data }) => {
               className="w-12 h-12 rounded-full object-cover"
             />
             <div className="text-gray-800 font-medium text-base">
-            <p>  {item.response} </p>
+              <p> {item.response} </p>
               <div className="text-sm text-gray-500 mt-1">{item.time}</div>
 
               {/* Rating Stars */}

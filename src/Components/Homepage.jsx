@@ -53,28 +53,33 @@ const Homepage = () => {
     const matchedData = sampleData.filter((item) =>
       item.question.toLowerCase().includes(inputValue.toLowerCase())
     );
-  
+
+    const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
+    let newEntry;
+
     if (matchedData.length > 0) {
-      const newEntry = matchedData[0];
-  
-      // Get previous questions from localStorage (if any)
-      const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
-  
-      // Add new question to the list
-      const updatedData = [...prevData, newEntry];
-  
-      // Save to localStorage
-      localStorage.setItem("HomepageData", JSON.stringify(updatedData));
-  
-      // Update component state
-      setHomepageData(updatedData);
-      setIsHidden(true);
-      setInputValue("");
+      newEntry = matchedData[0];
+    } else {
+      newEntry = {
+        question: inputValue,
+        response: "Sorry, Did not understand your query!",
+      };
     }
+
+    const updatedData = [...prevData, newEntry];
+
+    // Save to localStorage
+    localStorage.setItem("HomepageData", JSON.stringify(updatedData));
+
+    // Update component state
+    setHomepageData(updatedData);
+    setIsHidden(true);
+    setInputValue("");
   };
 
   const handleSave = (e) => {
-    e.preventDefault();}
+    e.preventDefault();
+  };
 
   useEffect(() => {
     const storedData = localStorage.getItem("inputData");
@@ -177,7 +182,11 @@ const Homepage = () => {
                     >
                       Ask
                     </button>
-                    <button type="button" className=" w-1/6"  onClick={handleSave}>
+                    <button
+                      type="button"
+                      className=" w-1/6"
+                      onClick={handleSave}
+                    >
                       Save
                     </button>
                   </form>
