@@ -166,38 +166,40 @@ const Homepage = () => {
             HomepageData && <QuestionAnswer data={HomepageData} />
           )}
 
-          {/* <div className="fixed bottom-0 w-full bg-white px-4 py-3 shadow-inner"> */}
-          {/* <div className="fixed bottom-0 w-full md: bg-white ps-0 py-3 shadow-inner"> */}
-          <div className="flex flex-col md:flex-row md:items-center gap-4 max-w-6xl mx-auto">
-            {/* Input - 75% on md+ */}
-            <input
-              type="text"
-              placeholder="Please tell me about your query!"
-              className="w-full md:w-3/4 h-14 border-2 border-gray-300 rounded-lg px-4 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-              onChange={handleInputChange}
-            />
+<div className="flex flex-col md:flex-row md:items-center gap-4 w-full mx-auto">
 
-            {/* Buttons - 25% on md+ */}
-            <div className="flex gap-2 w-full md:w-1/4">
-              <button
-                type="button"
-                onClick={handleAsk}
-                className="w-1/2 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
-              >
-                Ask
-              </button>
-              <button
-                type="button"
-                onClick={handleSave}
-                className="w-1/2 bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200"
-              >
-                Save
-              </button>
-            </div>
-          </div>
-          {/* </div> */}
+{/* Input inside form */}
+<form action="" className="w-full md:w-3/4">
+  <input
+    type="text"
+    placeholder="Please tell me about your query!"
+    className="w-full h-14 border-2 border-gray-300 rounded-lg px-4 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+    onChange={handleInputChange}
+  />
+</form>
 
-          {/* </div> */}
+{/* Buttons */}
+<div className="flex gap-2 w-full md:w-1/4">
+  <button
+    data-testid="ask-button"
+    type="button"
+    onClick={handleAsk}
+    className="w-1/2 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
+  >
+    Ask
+  </button>
+  <button
+    data-testid="save-button"
+    type="button"
+    onClick={handleSave}
+    className="w-1/2 bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200"
+  >
+    Save
+  </button>
+</div>
+
+</div>
+
         </div>
       </div>
     </>
