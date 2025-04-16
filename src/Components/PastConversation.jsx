@@ -12,7 +12,7 @@ const PastConversation = () => {
         <div className="w-full md:w-1/4 bg-white-200 p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
             <button
-              type="submit"
+              type="button"
               className="text-black font-bold text-xl w-full text-left"
               onClick={() => {
                 navigate("/");
@@ -39,6 +39,7 @@ const PastConversation = () => {
           </div>
 
           <button
+            type="button"
             className="bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow"
             onClick={() => {
               navigate("/history");
