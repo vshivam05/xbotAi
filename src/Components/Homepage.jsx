@@ -75,7 +75,7 @@ const Homepage = () => {
     setHomepageData([...HomepageData, JSON.parse(storedData)]);
 
     // console.log("Homepage", HomepageData);
-  }, [inputValue]);
+  }, []);
   return (
     <>
       <div className="flex flex-col md:flex-row h-screen w-full">
@@ -109,7 +109,7 @@ const Homepage = () => {
 
           <Link to="/history">
             <button
-              type="submit"
+              type="button"
               className=" w-full bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow"
               // onClick={() => {
               //   navigate("/history");
