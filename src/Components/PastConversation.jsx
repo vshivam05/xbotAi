@@ -11,31 +11,33 @@ const PastConversation = () => {
       <div className="flex flex-col md:flex-row h-screen w-full">
         <div className="w-full md:w-1/4 bg-white-200 p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
-            <button
-              type="button"
-              className="text-black font-bold text-xl w-full text-left"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              <div className="flex flex-row gap-4 items-center">
-                <img
-                  src={newchat}
-                  alt="New Query"
-                  className="w-10 h-10 rounded-full"
-                />
-                <span className="text-lg font-semibold text-black">
-                  New Query?
-                </span>
-                <span className="text-black font-bold">
+            <a href="/" className="w-full">
+              <button
+                type="button"
+                className="text-black font-bold text-xl w-full md:w-full text-left"
+                // onClick={() => {
+                //   navigate("/");
+                // }}
+              >
+                <div className="flex flex-row gap-4 items-center">
                   <img
-                    src={chat}
-                    alt="new chat"
-                    className=" me-0 h-8 rounded-full"
+                    src={newchat}
+                    alt="New Query"
+                    className="w-10 h-10 rounded-full"
                   />
-                </span>
-              </div>
-            </button>
+                  <span className="text-lg font-semibold text-black">
+                    New Query?
+                  </span>
+                  <span className="text-black font-bold">
+                    <img
+                      src={chat}
+                      alt="new chat"
+                      className=" me-0 h-8 rounded-full"
+                    />
+                  </span>
+                </div>
+              </button>
+            </a>
           </div>
 
           <button

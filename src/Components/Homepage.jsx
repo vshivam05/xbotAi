@@ -70,7 +70,7 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    const storedData = localStorage.getItem("inputData");
+    const storedData = localStorage.getItem("HomepageData");
 
     setHomepageData([...HomepageData, JSON.parse(storedData)]);
 
@@ -81,39 +81,43 @@ const Homepage = () => {
       <div className="flex flex-col md:flex-row h-screen w-full">
         <div className="w-full md:w-1/4 bg-purple-200 p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
-            <button
-              className="text-black font-bold text-xl w-full text-left"
-              type="submit"
-            >
-              <div className="flex flex-row gap-4 items-center">
-                <img
-                  src={newchat}
-                  alt="New Query"
-                  className="w-10 h-10 rounded-full"
-                />
-                <span className="text-lg font-semibold text-black">
-                  New Query?
-                </span>
-                <span className="text-black font-bold">
+            <a href="/" className="w-full">
+              <button
+                className="text-black font-bold text-xl w-full text-left"
+                type="button"
+              >
+                <div className="flex flex-row gap-4 items-center">
                   <img
-                    src={chat}
-                    alt="new chat"
-                    className=" me-0 h-8 rounded-full"
+                    src={newchat}
+                    alt="New Query"
+                    className="w-10 h-10 rounded-full"
                   />
-                </span>
-              </div>
-            </button>
+                  <span className="text-lg font-semibold text-black">
+                    New Query?
+                  </span>
+                  <span className="text-black font-bold">
+                    <img
+                      src={chat}
+                      alt="new chat"
+                      className=" me-0 h-8 rounded-full"
+                    />
+                  </span>
+                </div>
+              </button>
+            </a>
           </div>
 
-          <button
-            type="submit"
-            className="bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow"
-            onClick={() => {
-              navigate("/history");
-            }}
-          >
-            Past Conversations
-          </button>
+          <a href="/history">
+            <button
+              type="submit"
+              className=" w-full bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow"
+              // onClick={() => {
+              //   navigate("/history");
+              // }}
+            >
+              Past Conversations
+            </button>
+          </a>
         </div>
 
         {/* right Content ********************************************************************/}
@@ -166,7 +170,7 @@ const Homepage = () => {
             HomepageData && <QuestionAnswer data={HomepageData} />
           )}
 
-          <div className="flex flex-col md:flex-row  w-full gap-2 bottom-0 h-14 md:h-20 absolute p-2">
+          <div className="flex flex-col md:flex-row  w-full  bottom-0  absolute p-2">
             <div className="w-full md:w-3/4">
               <input
                 type="text"
@@ -178,8 +182,8 @@ const Homepage = () => {
             </div>
             <div className="flex gap-2 w-full md:w-1/4">
               <button
-                data-testid="ask-button"
-                type="button"
+                data-testid="ask-button-main"
+                type="submit"
                 onClick={handleAsk}
                 className="w-1/2 bg-purple-600 ..."
               >
