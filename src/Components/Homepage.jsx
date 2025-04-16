@@ -166,24 +166,22 @@ const Homepage = () => {
             HomepageData && <QuestionAnswer data={HomepageData} />
           )}
 
-          <div className="flex flex-col md:flex-row md:items-center gap-4 w-full mx-auto">
-            {/* Input inside form */}
-            <form action="" className="w-full md:w-3/4">
+          <div className="flex flex-col md:flex-row  w-full gap-2 bottom-0 h-14 md:h-20 absolute p-2">
+            <div className="w-full md:w-3/4">
               <input
                 type="text"
                 placeholder="Please tell me about your query!"
-                className="w-full h-14 border-2 border-gray-300 rounded-lg px-4 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full h-14 border-2 ..."
                 onChange={handleInputChange}
+                value={inputValue}
               />
-            </form>
-
-            {/* Buttons */}
+            </div>
             <div className="flex gap-2 w-full md:w-1/4">
               <button
                 data-testid="ask-button"
-                type="submit"
+                type="button"
                 onClick={handleAsk}
-                className="w-1/2 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
+                className="w-1/2 bg-purple-600 ..."
               >
                 Ask
               </button>
@@ -191,7 +189,7 @@ const Homepage = () => {
                 data-testid="save-button"
                 type="button"
                 onClick={handleSave}
-                className="w-1/2 bg-gray-300 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-400 transition duration-200"
+                className="w-1/2 bg-gray-300 ..."
               >
                 Save
               </button>
