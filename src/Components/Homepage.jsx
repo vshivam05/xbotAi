@@ -8,7 +8,7 @@ import DefaultQuesJson from "../apiData/Default.json";
 import DefaultQuestion from "./DefaultQuestion";
 import "./Homepage.css";
 import QuestionAnswer from "./QuestionAnswer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const Homepage = () => {
   const [HomepageData, setHomepageData] = useState([]);
   const [isHiden, setIsHidden] = useState(false);
@@ -81,7 +81,7 @@ const Homepage = () => {
       <div className="flex flex-col md:flex-row h-screen w-full">
         <div className="w-full md:w-1/4 bg-purple-200 p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
-            <a href="/" className="w-full">
+            <Link to="/" className="w-full">
               <button
                 className="text-black font-bold text-xl w-full text-left"
                 type="button"
@@ -104,10 +104,10 @@ const Homepage = () => {
                   </span>
                 </div>
               </button>
-            </a>
+            </Link>
           </div>
 
-          <a href="/history">
+          <Link to="/history">
             <button
               type="submit"
               className=" w-full bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow"
@@ -117,7 +117,7 @@ const Homepage = () => {
             >
               Past Conversations
             </button>
-          </a>
+          </Link>
         </div>
 
         {/* right Content ********************************************************************/}

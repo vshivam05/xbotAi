@@ -1,7 +1,7 @@
 import React from "react";
 import newchat from "../assets/newchat.png";
 import chat from "../assets/chat.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const PastConversation = () => {
   const navigate = useNavigate();
   const storedData = localStorage.getItem("HomepageData");
@@ -11,7 +11,7 @@ const PastConversation = () => {
       <div className="flex flex-col md:flex-row h-screen w-full">
         <div className="w-full md:w-1/4 bg-white-200 p-4 flex flex-col gap-4">
           <div className="flex items-center justify-between bg-purple-300 p-3 rounded-lg shadow">
-            <a href="/" className="w-full">
+            <Link to="/" className="w-full">
               <button
                 type="button"
                 className="text-black font-bold text-xl w-full md:w-full text-left"
@@ -37,15 +37,16 @@ const PastConversation = () => {
                   </span>
                 </div>
               </button>
-            </a>
+            </Link>
           </div>
 
+<Link to="/history" ></Link>
           <button
             type="button"
             className="bg-purple-300 hover:bg-purple-400 text-black font-semibold py-2 px-4 rounded-lg shadow"
-            onClick={() => {
-              navigate("/history");
-            }}
+            // onClick={() => {
+            //   navigate("/history");
+            // }}
           >
             Past Conversations
           </button>
