@@ -5,7 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import person from "../assets/person.png";
 import bot from "../assets/bot.png";
 const PastConversation = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const storedData = localStorage.getItem("HomepageData");
   const parsedData = JSON.parse(storedData) || [];
   return (
@@ -72,7 +72,7 @@ const PastConversation = () => {
             Conversation History
           </h3>
 
-          <div className="PastChatList">
+          <div className="PastChatList max-h-[500px] overflow-y-auto pr-2">
             {
               // console.log(parsedData)
 
@@ -80,9 +80,9 @@ const PastConversation = () => {
                 parsedData.map((item, index) => (
                   <div
                     key={index}
-                    className="QNA p-4 space-y-4 bg-white border-2 border-gray-300 rounded-lg shadow-md hover:bg-purple-100 transition duration-300 ease-in-out"
+                    className="QNA p-4 space-y-4  transition duration-300 ease-in-out"
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 border-2 border-purple-300 p-6 rounded-lg shadow-md bg-purple-300   ">
                       <img
                         src={person}
                         alt="User"
@@ -96,7 +96,7 @@ const PastConversation = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4 border-2 border-purple-300 p-6 rounded-lg shadow-md bg-purple-300  ">
                       <img
                         src={bot}
                         alt="Bot"

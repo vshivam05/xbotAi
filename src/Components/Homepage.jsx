@@ -14,12 +14,13 @@ const Homepage = () => {
   const [isHiden, setIsHidden] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // const storedData = localStorage.getItem("HomepageData");
   const handleClick = (ques) => {
     // console.log(ques);
     // setHomepageData(ques);
     // console.log(ques);
+    
     // setIsHidden(true);
 
     const prevData = JSON.parse(localStorage.getItem("HomepageData")) || [];
